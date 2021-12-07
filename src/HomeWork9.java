@@ -21,7 +21,8 @@ public class HomeWork9 {
         Требуется:
         1) Создать метод myReverse(int [] array), который принимает в качестве аргумента
         массив целочисленных элементов и возвращает инвертированный массив (элементы массива в обратном порядке).
-        2) Создайте метод int [] subArray(int [] array, int index, int count). Метод возвращает часть полученного в качестве аргумента массива,
+        2) Создайте метод int [] subArray(int [] array, int index, int count).
+        Метод возвращает часть полученного в качестве аргумента массива,
         начиная с позиции указанной в аргументе index, размерностью, которая соответствует значению аргумента count.
         Если аргумент count содержит значение больше чем количество элементов,
         которые входят в выбираемую часть исходного массива (от указанного индекса index, до индекса последнего элемента),
@@ -29,7 +30,11 @@ public class HomeWork9 {
         которые не были скопированы из исходного массива.
         */
         System.out.println("Задание 3");
-        // new ReversedArray().myReverse(new int[]{2, 5, 6, 8, 7, 4, 1});
+        ReversedArray newCl = new ReversedArray();
+        int[] listNumb = {2, 5, 6, 8, 7, 4, 1};
+        System.out.println(java.util.Arrays.toString(newCl.myReverse(listNumb)));
+        System.out.println(java.util.Arrays.toString(newCl.subArray(listNumb, 1, 2)));
+
         System.out.println("-------------------------------------");
 
         /*
@@ -43,7 +48,7 @@ public class HomeWork9 {
         первого аргумента должны скопироваться в новый массив начиная с индекса 1.
         */
         System.out.println("Задание 4");
-        new UserArray().userArray(new int[]{2, 5, 6, 8, 7, 4, 1}, 100);
+        new UserArray().userArray(new int[]{2, 5, 6, 8, 7, 4, 1});
         System.out.println("-------------------------------------");
 
         /*
@@ -70,8 +75,7 @@ public class HomeWork9 {
             int min = 0;
             int max = 0;
             int sumAll = 0;
-            for (int i = 0; i < arr.length; i++) {
-                int n = arr[i];
+            for (int n : arr) {
                 sumAll += n; // общую сумму всех элементов
                 if (min >= n) min = n; //наименьшее значение массива
                 if (max <= n) max = n; // наибольшее значение массива
@@ -92,18 +96,29 @@ public class HomeWork9 {
             for (int i = array.length - 1; i >= 0; i--) {
                 f[t++] = array[i];
             }
-            for (int i = 0; i < f.length; i++) {
-                System.out.print(f[i] + "; ");
-            }
-            System.out.println();
             return f;
+        }
+
+        int[] subArray(int[] array, int index, int count) {
+            int[] arrNew;
+            int leghtElem = array.length;
+            if (leghtElem > index & leghtElem > count & leghtElem >= count + index & array.length != 0) {
+                arrNew = new int[count];
+                for (int i = index, t = 0; i < array.length & t < count; i++, t++) {
+                    arrNew[t] = array[i];
+                }
+            } else {
+                System.out.println("ERROR!!!!!! \n int[] array, int index, int count = некоректный ввод аргументов");
+                arrNew = new int[0];
+            }
+            return arrNew;
         }
     }
 
     static class UserArray {
-        void userArray(int[] ar, int value) {
+        void userArray(int[] ar) {
             int[] newAr = new int[ar.length + 1];
-            newAr[0] = value;
+            newAr[0] = 100;
             int t = 1;
             for (int i = 0; i < ar.length; i++) {
                 newAr[t++] = ar[i];
