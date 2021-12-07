@@ -17,8 +17,15 @@ public class HomeWork8 {
         System.out.println("Задание 2");
         Bank yourCredit = new Bank(700);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        double pay = Double.parseDouble(reader.readLine());
-        yourCredit.sumPlat(pay);
+        double credit = yourCredit.credit;
+        while (credit > 0) {
+            double pay = Double.parseDouble(reader.readLine());
+            if (credit > 100 & pay < 100) {
+                System.out.println("Ежемесячная сумма платежа должна составлять не меньше 100 грн.");
+            } else {
+                credit = yourCredit.sumPlat(pay);
+            }
+        }
         System.out.println("-------------------------------------");
 
         /*
@@ -33,7 +40,7 @@ public class HomeWork8 {
         */
 
         System.out.println("Задание 3");
-        new Delivery().variant(6);
+        new Delivery().variant();
         System.out.println(new Delivery().variant2(6));
         System.out.println("-------------------------------------");
 
@@ -44,18 +51,18 @@ public class HomeWork8 {
         и возвращает значение каждого аргумента, деленного на 5.
         */
         System.out.println("Задание 4");
-        System.out.println(new Calculator(5, 10, 15));
+        System.out.println(new Calculator(5, 8, 15));
         System.out.println("-------------------------------------");
     }
 
     static class Bank {
-        private double credit;
+        public double credit;
 
         public Bank(double credit) {
             this.credit = credit;
         }
 
-        public void sumPlat(double pay) {
+        public double sumPlat(double pay) {
             double debt = credit - pay;
             if ((debt > 0)) {
                 System.out.println("Cумма задолженности - " + debt);
@@ -64,23 +71,25 @@ public class HomeWork8 {
             } else {
                 System.out.println("Сумма переплаты - " + debt);
             }
+            credit = debt;
+            return credit;
         }
     }
 
     static class Delivery {
         int customer = 1;
 
-        void variant(int x) {
-            for (int i = 1; i <= x; i++) {
+        void variant() {
+            for (int i = 1; i <= 6; i++) {
                 customer *= i;
             }
             System.out.println(customer);
         }
 
         int variant2(int x) {
-            if (x>1)
-            x *= variant2(x - 1);
-           return x;
+            if (x > 1)
+                x *= variant2(x - 1);
+            return x;
         }
     }
 
@@ -90,9 +99,9 @@ public class HomeWork8 {
         double z1;
 
         public Calculator(int x, int y, int z) {
-            x1 = x / 5;
-            y1 = y / 5;
-            z1 = z / 5;
+            x1 = (double) x / 5;
+            y1 = (double) y / 5;
+            z1 = (double) z / 5;
         }
 
         @Override

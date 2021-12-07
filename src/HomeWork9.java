@@ -12,7 +12,7 @@ public class HomeWork9 {
         вывести все нечетные значения.
         */
         System.out.println("Задание 2");
-        //new CustomerArray().arrayList();
+        new CustomerArray().arrayList();
         System.out.println("-------------------------------------");
 
         /*
@@ -72,14 +72,14 @@ public class HomeWork9 {
             int sumAll = 0;
             for (int i = 0; i < arr.length; i++) {
                 int n = arr[i];
-                sumAll += n;
-                if (min >= n) min = n;
-                if (max <= n) max = n;
-                if (n < 0) System.out.println("Нечетное значения - " + n);
+                sumAll += n; // общую сумму всех элементов
+                if (min >= n) min = n; //наименьшее значение массива
+                if (max <= n) max = n; // наибольшее значение массива
+                if (n % 2 != 0) System.out.println("Нечетное значения - " + n); //вывести все нечетные значения
             }
-            System.out.println("max - " + max);
-            System.out.println("min - " + min);
-            System.out.println("sumAll - " + sumAll);
+            System.out.println("max - " + max); //наибольшее значение массива
+            System.out.println("min - " + min); //наименьшее значение массива
+            System.out.println("sumAll - " + sumAll); //общую сумму всех элементов
             System.out.println("middleAr - " + (double) sumAll / arr.length);
         }
 
