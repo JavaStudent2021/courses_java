@@ -63,7 +63,9 @@ public class HomeWork5 {
         Используя теорему Де Моргана, преобразуйте исходное выражение A | B, в эквивалентное выражение.
         */
         System.out.println("Задание 6");
-
+        int a = 2, b = 4;
+        if (a > 1 | b > 2) System.out.println(a | b);
+        if (a > 1 || b > 2) System.out.println(a > 1 || b > 2);
         System.out.println("-------------------------------------");
 
 

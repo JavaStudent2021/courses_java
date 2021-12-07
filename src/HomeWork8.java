@@ -33,8 +33,8 @@ public class HomeWork8 {
         */
 
         System.out.println("Задание 3");
-        new Delivery().variant(5);
-        new Delivery().variant2(5);
+        new Delivery().variant(6);
+        System.out.println(new Delivery().variant2(6));
         System.out.println("-------------------------------------");
 
         /*
@@ -49,29 +49,21 @@ public class HomeWork8 {
     }
 
     static class Bank {
-        private double credit = 700.0;
+        private double credit;
 
         public Bank(double credit) {
             this.credit = credit;
-            System.out.println("Сумма кредита сотавляет: " + this.credit);
-            System.out.println("Введите сумму платежа:");
         }
 
-        void sumPlat(double pay) throws IOException {
-            double debt = (getCredit() - pay) > 0 ? (getCredit() - pay) : (getCredit() - pay);
-            System.out.println((debt > 0) ? "Cумма задолженности - " + debt :
-                    (debt == 0) ? "Отсутствие долга" :
-                            "Сумма переплаты - " + debt);
-            setCredit(pay);
-            System.out.println("Информацию о состоянии кредита: " + getCredit());
-        }
-
-        public double getCredit() {
-            return credit;
-        }
-
-        public void setCredit(double credit) {
-            this.credit -= credit;
+        public void sumPlat(double pay) {
+            double debt = credit - pay;
+            if ((debt > 0)) {
+                System.out.println("Cумма задолженности - " + debt);
+            } else if (debt == 0) {
+                System.out.println("Отсутствие долга");
+            } else {
+                System.out.println("Сумма переплаты - " + debt);
+            }
         }
     }
 
@@ -85,17 +77,17 @@ public class HomeWork8 {
             System.out.println(customer);
         }
 
-        void variant2(int x) {
-            x--;
-            //      if (x>0) customer *= variant2(x);
-            System.out.println(customer);
+        int variant2(int x) {
+            if (x>1)
+            x *= variant2(x - 1);
+           return x;
         }
     }
 
     static class Calculator {
-        int x1;
-        int y1;
-        int z1;
+        double x1;
+        double y1;
+        double z1;
 
         public Calculator(int x, int y, int z) {
             x1 = x / 5;

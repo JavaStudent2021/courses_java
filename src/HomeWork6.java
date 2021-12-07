@@ -51,9 +51,11 @@ public class HomeWork6 {
         int b = 20;
 
         void numberPeriod() {
-            for (int i = a + 1; i < b; i++) {
-                System.out.println("i - " + i);
+            int sum = 0;
+            for (int i = a; i < b; i++) {
+                sum += i;
             }
+            System.out.println("i - " + sum);
         }
 
         void numberNechet() {
