@@ -19,16 +19,39 @@ public class HomeWork7 {
         для выполнения вычислений.
         */
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Введите первый аргумент: ");
+        String znac = "";
+        int y = 0;
         int x = Integer.parseInt(reader.readLine());
-        int y = Integer.parseInt(reader.readLine());
+        if (x == 0) {
+            System.out.println("/by zero");
+        } else {
+            System.out.println("Введите другий аргумент: ");
+            y = Integer.parseInt(reader.readLine());
+            System.out.println("Введите знак арифметической операции: ");
+            znac = reader.readLine();
+        }
+
         //reader.close();
 
         System.out.println("Задание 2");
         Arithmetics arithmetics = new Arithmetics();
-        arithmetics.add(x, y);
-        arithmetics.sub(x, y);
-        arithmetics.mul(x, y);
-        arithmetics.div(x, y);
+        switch (znac) {
+            case "+":
+                arithmetics.add(x, y);
+                break;
+            case "-":
+                arithmetics.sub(x, y);
+                break;
+            case "*":
+                arithmetics.mul(x, y);
+                break;
+            case "/":
+                arithmetics.div(x, y);
+                break;
+            default:
+                System.out.println("Такой арифметической операции нет.: ");
+        }
         System.out.println("-------------------------------------");
 
 
@@ -84,11 +107,7 @@ public class HomeWork7 {
         }
 
         void div(int x, int y) {
-            if (y == 0) {
-                System.out.println("/by zero");
-            } else {
-                System.out.println((double) x / y);
-            }
+            System.out.println((double) x / y);
 
         }
 
@@ -142,7 +161,7 @@ public class HomeWork7 {
 
     static class Calculator {
         public Calculator(int x, int y, int z) {
-            System.out.format("%.4f \n",(x + y + z) / 3.0);
+            System.out.format("%.4f \n", (x + y + z) / 3.0);
         }
     }
 
