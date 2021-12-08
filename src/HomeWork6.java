@@ -48,14 +48,14 @@ public class HomeWork6 {
 
     static class SumMin {
         int a = 5;
-        int b = 20;
+        int b = 8;
 
         void numberPeriod() {
             int sum = 0;
-            for (int i = a; i < b; i++) {
+            for (int i = a+1; i < b; i++) {
                 sum += i;
             }
-            System.out.println("i - " + sum);
+            System.out.println("sum - " + sum);
         }
 
         void numberNechet() {

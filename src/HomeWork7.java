@@ -21,14 +21,14 @@ public class HomeWork7 {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int x = Integer.parseInt(reader.readLine());
         int y = Integer.parseInt(reader.readLine());
-        String znak = reader.readLine();
-        reader.close();
+        //reader.close();
 
         System.out.println("Задание 2");
-        new Arithmetics().add(x, y, znak);
-        new Arithmetics().sub(x, y, znak);
-        new Arithmetics().mul(x, y, znak);
-        new Arithmetics().div(x, y, znak);
+        Arithmetics arithmetics = new Arithmetics();
+        arithmetics.add(x, y);
+        arithmetics.sub(x, y);
+        arithmetics.mul(x, y);
+        arithmetics.div(x, y);
         System.out.println("-------------------------------------");
 
 
@@ -71,23 +71,23 @@ public class HomeWork7 {
     }
 
     static class Arithmetics {
-        void add(int x, int y, String znak) {
+        void add(int x, int y) {
             System.out.println(x + y);
         }
 
-        void sub(int x, int y, String znak) {
+        void sub(int x, int y) {
             System.out.println(x - y);
         }
 
-        void mul(int x, int y, String znak) {
+        void mul(int x, int y) {
             System.out.println(x * y);
         }
 
-        void div(int x, int y, String znak) {
+        void div(int x, int y) {
             if (y == 0) {
                 System.out.println("/by zero");
             } else {
-                System.out.println(x / y);
+                System.out.println((double) x / y);
             }
 
         }
@@ -100,7 +100,7 @@ public class HomeWork7 {
             System.out.println("Введите: \n первое значение это сумма денег в грн. \n второе значение курс для конвертации в другую валюту: \n");
             double grn = Double.parseDouble(reader.readLine());
             double curs = Double.parseDouble(reader.readLine());
-            reader.close();
+            //reader.close();
             System.out.format("%.2f \n", (grn / curs));
         }
     }
