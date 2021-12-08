@@ -33,7 +33,6 @@ public class HomeWork7 {
         }
 
         //reader.close();
-
         System.out.println("Задание 2");
         Arithmetics arithmetics = new Arithmetics();
         switch (znac) {
