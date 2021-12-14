@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 
 public class HomeWork7 {
     public static void main(String[] args) throws IOException {
-
+        System.out.println();
         /*
         Задание 2
         Используя IntelliJ IDEA, создайте класс Arithmetics.
