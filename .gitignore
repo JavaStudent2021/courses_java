@@ -1,3 +1,4 @@
-#.idea
-#*.iml
-#/out
+.idea
+*.iml
+out
+src\courses_java_Starter
