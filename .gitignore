@@ -1,4 +1,4 @@
 .idea
 *.iml
-out
-src\courses_java_Starter
+\out
+\src\courses_java_Starter

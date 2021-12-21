@@ -1,4 +1,4 @@
-package courses__java_Bases.oop_1;
+package courses__java_Bases.x_1_oop;
 
 public class Rectangle {
     double side1;

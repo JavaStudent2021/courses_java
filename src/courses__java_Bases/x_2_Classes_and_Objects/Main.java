@@ -1,4 +1,4 @@
-package courses__java_Bases.Classes_and_Objects_2;
+package courses__java_Bases.x_2_Classes_and_Objects;
 
 public class Main {
     public static void main(String[] args) {
