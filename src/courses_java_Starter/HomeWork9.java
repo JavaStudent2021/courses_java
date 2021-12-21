@@ -1,5 +1,9 @@
 package courses_java_Starter;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class HomeWork9 {
     public static void main(String[] args) {
         /*
@@ -65,15 +69,21 @@ public class HomeWork9 {
     }
 
     static class CustomerArray {
+        private int lenghtArr;
         void arrayList() {
-            int[] arr = new int[7];
-            arr[0] = 5;
-            arr[1] = 8;
-            arr[2] = 1;
-            arr[3] = -3;
-            arr[4] = 2;
-            arr[5] = 10;
-            arr[6] = 9;
+            try {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Введите размер массива: ");
+                lenghtArr = Integer.parseInt(reader.readLine());
+            } catch (Exception e) { }
+
+
+
+
+            int[] arr = new int[lenghtArr];
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = i;
+            }
             int min = 0;
             int max = 0;
             int sumAll = 0;
