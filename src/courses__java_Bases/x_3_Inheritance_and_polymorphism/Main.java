@@ -1,7 +1,6 @@
 package courses__java_Bases.x_3_Inheritance_and_polymorphism;
 
-import courses__java_Bases.x_3_Inheritance_and_polymorphism.task2.ClassRoom;
-import courses__java_Bases.x_3_Inheritance_and_polymorphism.task2.Pupil;
+import courses__java_Bases.x_3_Inheritance_and_polymorphism.task2.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,7 +22,7 @@ public class Main {
         Предусмотрите возможность того, что пользователь может передать 2 или 3 аргумента.
         Выведите информацию о том, как все ученики экземпляра класса ClassRoom умеют учиться, читать, писать, отдыхать.
         */
-        ClassRoom classRoom = new ClassRoom(new Pupil());
+        ClassRoom classRoom = new ClassRoom(new Pupil[]{new BadPupil("Nik"),new ExcelentPupil("Den"),new GoodPupil("Sonya")});
         System.out.println(classRoom);
         /*
         Задание 3
@@ -75,5 +74,7 @@ public class Main {
         и вызове соответствующего метода их экземпляра, строки, переданные в качестве аргументов методов, выводились разными цветами.
         Обязательно используйте приведение типов.
         */
+
     }
+
 }

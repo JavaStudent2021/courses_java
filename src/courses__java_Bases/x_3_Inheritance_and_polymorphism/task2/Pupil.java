@@ -3,7 +3,16 @@ package courses__java_Bases.x_3_Inheritance_and_polymorphism.task2;
 public class Pupil {
 
     private int grade;
+
+    public String getNameStudent() {
+        return nameStudent;
+    }
+
     private String nameStudent;
+
+    public Pupil(String nameStudent) {
+        this.nameStudent = nameStudent;
+    }
 
     void study() {
         System.out.println("Оценка успеваемости - " + getGrade());
