@@ -1,27 +1,13 @@
 package courses__java_Bases.x_5_Lists.test;
 
 public class Card {
-    String suit;
-    int rank;
+    private Suit suit; // масть
+    private String dignity; //достотнство
+    private int rank; // стоимостьо
 
-    public Card(String suit, int rank) {
+    public Card(Suit suit, String dignity, int rank) {
         this.suit = suit;
-        this.rank = rank;
-    }
-
-    public String getSuit() {
-        return suit;
-    }
-
-    public void setSuit(String suit) {
-        this.suit = suit;
-    }
-
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
+        this.dignity = dignity;
         this.rank = rank;
     }
 
