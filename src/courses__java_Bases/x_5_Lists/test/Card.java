@@ -5,16 +5,22 @@ public class Card {
     private String dignity; //достотнство
     private int rank; // стоимостьо
 
+    public int getRank() {
+        return rank;
+    }
+
     public Card(Suit suit, String dignity, int rank) {
         this.suit = suit;
         this.dignity = dignity;
         this.rank = rank;
+
     }
 
     @Override
     public String toString() {
         return "Card{" +
                 "suit='" + suit + '\'' +
+                "dignity='" + dignity + '\'' +
                 ", rank=" + rank +
                 '}';
     }
