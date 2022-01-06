@@ -28,9 +28,9 @@ public class PlayerHand {
 
     @Override
     public String toString() {
-        return "PlayerHand{" +
-                ", namePlayer='" + namePlayer + '\'' +
-                "cards=" + cards +
-                '}';
+        return "{" + // PlayerHand
+                "User = '" + namePlayer + '\'' +
+                "\ncards = " + cards +
+                "}\n----------------------------------";
     }
 }

@@ -52,14 +52,15 @@ public class Deck{
         deck.add(new Card(Suit.HEARTS,"K", 10));
         deck.add(new Card(Suit.HEARTS,"T", 10));
         deck.add(new Card(Suit.HEARTS,"J", 10));
+
+        Collections.shuffle(deck);
     }
 
 
     Card distributeOneCard(){
-        Collections.shuffle(deck);
-        Card card = deck.get(0);
-        deck.remove(deck.get(0));
-        return card;
+        Card d = deck.remove(0);
+        System.out.println("d = " + d);
+        return d;
     }
 
     @Override

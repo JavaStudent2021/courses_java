@@ -6,6 +6,7 @@ public enum Suit {
     DIAMONDS("Бубны"), // Бубны ("Бубны")
     HEARTS("Червы"), // Червы ("Червы")
     SPADES("Пики"); // Пики ("Пики")
+
     private String suit;
 
     Suit(String suit) {

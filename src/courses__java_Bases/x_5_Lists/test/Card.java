@@ -18,10 +18,10 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "suit='" + suit + '\'' +
-                "dignity='" + dignity + '\'' +
-                ", rank=" + rank +
-                '}';
+        return "\n\tCard{\n" +
+                "\t\tsuit = " + suit +
+                "\n\t\tdignity = " + dignity +
+                "\n\t\trank = " + rank +
+                "\n}";
     }
 }

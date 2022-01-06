@@ -3,7 +3,7 @@ package courses__java_Bases.x_5_Lists.test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.*;
 
 public class BlackJack {
     public static void main(String[] args) {
@@ -12,42 +12,118 @@ public class BlackJack {
 
         //создание кол-ва играков
         listPlayerHand.addAll(enterNumberOfPlayers());
-        System.out.println(listPlayerHand);
+        //System.out.println(listPlayerHand);
         //начальнаая раздача карт
         firstDistributionOfCards(listPlayerHand, deck);
-        System.out.println(listPlayerHand);
+        //listPlayerHand.forEach(user -> System.out.println(user));
         boolean goGame = false;
         int sumCards = 0;
         while (!goGame) {
             goGame = true;
             for (int i = 0; i < listPlayerHand.size(); i++) {
                 sumCards = listPlayerHand.get(i).sumCards();
+
                 System.out.println("user0 - " + listPlayerHand.get(i).getNamePlayer() + " сумма карт - " + sumCards);
+                System.out.println("Продолжаем играть введите: Пропуск, Добрать, Удвоить, Разделить, Сдаться?");
 
-                if (sumCards < 21) {
-                    System.out.println("Выдать карту: ДА или НЕТ?");
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                    try {
-                        String go = checkWord(reader.readLine());
-                        if (go.equals("y")) {
-                            goGame = false;
-                            //если кол-во очков меньше 21 и игрок хочет получить из колоды карту.
-                            distributionOfCards(listPlayerHand.get(i), deck);
-                            //System.out.println("user - " + listPlayerHand.get(i).getNamePlayer() + " сумма карт - " + sumCards);
-                        } else if (go.equals("n")) {
-                            goGame = true;
-                        }
-
-                    } catch (Exception e) {
-                        System.out.println("Нужно ввести букву: 'y' или 'n'");
-                    }
+                String choice = null;
+                try {
+                    choice = action(new BufferedReader(new InputStreamReader(System.in)).readLine());
+                } catch (IOException e) {
+                    System.out.println("Что-то пошло не так!!!!!!!!!!!!!!!");
                 }
+
+                switch (choice) {
+                    case "Добрать": {
+                        pickUp(listPlayerHand.get(i), deck); // Добрать
+                        break;
+                    }
+                    case "Удвоить": {
+                        doub(listPlayerHand.get(i)); // Удвоить
+                        break;
+                    }
+                    case "Разделить": {
+                        divide(listPlayerHand.get(i)); //Разделить
+                        break;
+                    }
+
+                    case "Пропуск": {
+                        goGame = skip(listPlayerHand.get(i)); //Пропуск
+                        break;
+                    }
+                    case "Сдаться": {
+                        goGame = surrender(listPlayerHand.get(i), listPlayerHand); //Сдаться
+                        break;
+                    }
+                    default: {
+                        System.out.println("default");
+                    }
+
+                }                //System.out.println("Нужно ввести букву: 'y' или 'n'");
             }
+        }
+        checkWinnerOfPoints(listPlayerHand);
+    } // System.out.println("pickUp - " + user.getNamePlayer() + " сумма карт - " + user.sumCards() + "НЕ ПОЛОЖЕНО!!!!!!!!!");
+
+    private static boolean skip(PlayerHand user) {
+        return true;
+    }
+
+    private static void pickUp(PlayerHand user, Deck deck) {
+        if (user.sumCards() < 21) {
+            distributionOfCards(user, deck);
         }
     }
 
+    private static void doub(PlayerHand user) {
+    }
 
-    static ArrayList enterNumberOfPlayers() {
+    private static void divide(PlayerHand user) {
+    }
+
+    private static boolean surrender(PlayerHand user, List list) {
+        list.remove(user);
+        return true;
+    }
+
+    static String action(String word) {
+        if (word.equals("Пропуск") || word.equals("Добрать") || word.equals("") || word.equals("") || word.equals("")) {
+            return word;
+        } else {
+            try {
+                word = new BufferedReader(new InputStreamReader(System.in)).readLine();
+                action(word);
+            } catch (Exception e) {
+                System.out.println("Введите верный выбор!!!!");
+                action(word);
+            }
+        }
+        return word;
+    }
+
+    static void checkWinnerOfPoints(ArrayList<PlayerHand> list) {
+        PlayerHand user = null;
+        Map<PlayerHand, Integer> listWinner = new HashMap<>();
+        for (PlayerHand us : list) {
+            listWinner.put(us, us.sumCards());
+            System.out.println("sum - " + us.sumCards());
+        }
+        int win = 0;
+
+        listWinner.forEach((k,v)-> System.out.println("k - " + k +" = "+ v));
+
+        for (Map.Entry<PlayerHand, Integer> winner : listWinner.entrySet()) {
+            if (win == 0) {
+                winner.getValue();
+            } else if (winner.getValue() > win) {
+                win = winner.getValue();
+                user = winner.getKey();
+            }
+        }
+        System.out.println(user);
+    }
+
+    static List enterNumberOfPlayers() {
         ArrayList<PlayerHand> listPlayerHand = new ArrayList<>();
         boolean users = false;
         while (!users) {
@@ -61,17 +137,16 @@ public class BlackJack {
                     String nameUser = reader.readLine();
                     listPlayerHand.add(new PlayerHand(nameUser));
                 }
-
+                //reader.close();
             } catch (Exception e) {
                 System.out.println("Введенный символ не верный. Необходимо ввести целое число!.");
                 users = false;
             }
-
         }
         return listPlayerHand;
     }
 
-    static ArrayList firstDistributionOfCards(ArrayList<PlayerHand> listUser, Deck deck) {
+    static List firstDistributionOfCards(List<PlayerHand> listUser, Deck deck) {
         for (PlayerHand user : listUser) {
             user.setCards(deck.distributeOneCard());
             user.setCards(deck.distributeOneCard());
@@ -79,20 +154,25 @@ public class BlackJack {
         return listUser;
     }
 
-    static void distributionOfCards(PlayerHand user, Deck deck) throws IOException s{
+    static void distributionOfCards(PlayerHand user, Deck deck) {
         user.setCards(deck.distributeOneCard());
         int sumCard = user.sumCards();
         System.out.println("user1 - " + user.getNamePlayer() + " сумма карт - " + sumCard);
         if (sumCard < 21) {
             System.out.println("Выдать карту: ДА или НЕТ?");
-            String reader = new BufferedReader(new InputStreamReader(System.in)).readLine();
-            String chek = checkWord(reader);
-            if (chek.equals("y")) {
-                distributionOfCards(user, deck);
-            }else {
-                System.out.println("user2_1 - " + user.getNamePlayer() + " сумма карт - " + sumCard);
+            try {
+                String chek = checkWord(new BufferedReader(new InputStreamReader(System.in)).readLine());
+                if (chek.equals("y")) {
+                    distributionOfCards(user, deck);
+                } else {
+                    System.out.println("user2_1 - " + user.getNamePlayer() + " сумма карт - " + sumCard);
+                }
+
+            } catch (Exception e) {
+                System.out.println("Что-то пошло не так!!!!!!!!!!!!!!!");
             }
-        }else {
+
+        } else {
             System.out.println("user2_2 - " + user.getNamePlayer() + " сумма карт - " + sumCard);
         }
 
@@ -104,7 +184,7 @@ public class BlackJack {
             return word;
         } else {
             try {
-                System.out.println("Введите праавильный символ!!!!");
+                System.out.println("Введите верный символ!!!!");
                 word = new BufferedReader(new InputStreamReader(System.in)).readLine();
                 checkWord(word);
             } catch (Exception e) {
