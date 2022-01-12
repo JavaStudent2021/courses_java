@@ -1,0 +1,58 @@
+Дан код:
+public class Ab {
+ public static void main (String [] args) {
+ System.out.print ("A");
+ main ("java7");
+ }
+private static void main (String args) {
+  System.out.print ("B");
+  }
+}
+Что будет выведено в результате запуска и компиляции?
+
+ошибка компиляции
+
+AA
+
+AB
+
+BA
+=========================================
+Какой результат компиляции и выполнения программы:
+public class Main {
+    private int anInt = 4;
+
+    public Main() {
+        anInt = 5;
+    }
+
+    public static void main(String[] args) {
+        Main m = new Main();
+        int anInt = 6;
+        m.print(anInt);
+    }
+
+    public void print(int anInt) {
+        System.out.println(anInt);
+    }
+}
+
+4
+
+Ошибка времени выполнения
+
+6
+
+5
+=========================================
+Конструктор по умолчанию создается всегда?
+
+Да
+
+Нет
+
+
+=========================================
+
+
+=========================================
