@@ -35,18 +35,20 @@ public class Main {
           вывод на экран фамилии работника, стаж работы которого превышает введенное значение.
         */
 
-        /*try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            String nameWorker = reader.readLine();
-            String postWorker = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            String firstName = "Den";     //reader.readLine(); имя работника;
+            String lastName = "Merlin";   //reader.readLine(); фамилия работника;
+            String fatherName = "World"; //reader.readLine(); отчество работника;
+            String post = "Boss";        // название занимаемой должности;
+            System.out.println("Дату поступления сотрудника вводить нужно в формате: 'xx-xx-xxxx'");
             String data = reader.readLine();
             //String dateStartWork = new SimpleDateFormat("dd-MM-yyyy").format(new SimpleDateFormat("dd-MM-yyyy").parse(data));
             Date dateStartWork = new SimpleDateFormat("dd-MM-yyyy").parse(data);
-            Worker worker = new Worker(nameWorker, postWorker, dateStartWork);
-            System.out.println(worker);
+            Worker worker = new Worker(firstName, lastName, fatherName, post, dateStartWork);
+           System.out.println(worker);
         } catch (Exception e) {
             System.out.println("Дата сотрудника введена некоректно");
-            ;
-        }*/
+        }
 
 
 
@@ -88,7 +90,7 @@ public class Main {
         */
 
         Calculator calculator = new Calculator();
-        System.out.println(calculator.div(2,0));
+        System.out.println(calculator.div(2,4));
 
 
     }
