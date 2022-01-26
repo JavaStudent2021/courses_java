@@ -1,7 +1,12 @@
-package courses_java_Advanced.x_2_CollectionFramework.Main;
+package courses_java_Advanced.x_2_CollectionFramework;
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
 
         /*
@@ -20,6 +25,18 @@ public class Main {
         3.       Используя цикл for выведите результат на экран, каждое значение с новой строки.
         */
         System.out.println("Задание 2");
+      /*  ArrayList list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        for (int i = 0; i < 5; i++) {
+            try {
+                list.add(reader.readLine());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        new Task2().doubleValues(list).forEach(x-> System.out.println(x));
+        */
+
         System.out.println("-------------------------------------");
 
 
@@ -31,6 +48,17 @@ public class Main {
         3.       Найти минимальное число среди элементов списка - метод getMinimum.
         */
         System.out.println("Задание 3");
+
+
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int x = reader.read();
+        for (int i = 0; i < x; i++) {
+            t.getIntegerList(reader.readLine());
+        }
+
+
+        new Test3();
         System.out.println("-------------------------------------");
 
         /*
