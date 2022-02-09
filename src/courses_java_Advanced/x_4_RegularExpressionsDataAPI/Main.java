@@ -1,5 +1,8 @@
 package courses_java_Advanced.x_4_RegularExpressionsDataAPI;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -10,6 +13,7 @@ public class Main {
         Использование YouTube, Quizful приветствуется.
         */
         System.out.println("Задание 1");
+
         System.out.println("-------------------------------------");
 
         /*
@@ -17,6 +21,15 @@ public class Main {
         Напишите шуточную программу «Дешифратор», которая бы в текстовом файле могла бы заменить все предлоги на слово «Java».
         */
         System.out.println("Задание 2");
+        String text = "до вас спробувати за робити завдання на.";
+        String rex = "\\b(до|вас|на|за)\\b";
+
+        Pattern pattern = Pattern.compile(rex);
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()){
+            text = text.replaceAll(rex,"Java");
+        }
+        System.out.println(text);
         System.out.println("-------------------------------------");
 
 
