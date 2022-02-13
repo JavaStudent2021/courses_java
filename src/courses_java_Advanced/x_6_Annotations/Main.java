@@ -1,7 +1,13 @@
 package courses_java_Advanced.x_6_Annotations;
 
+import courses_java_Advanced.x_6_Annotations.task2.Calc;
+import courses_java_Advanced.x_6_Annotations.task2.Calculater;
+import courses_java_Advanced.x_6_Annotations.task3.Car;
+import courses_java_Advanced.x_6_Annotations.task3.SportCar;
+import courses_java_Advanced.x_6_Annotations.task3.miniGar;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchMethodException {
 
 
         /*
@@ -15,9 +21,15 @@ public class Main {
         /*
         Задание 2
         Написать калькулятор с использованием аннотаций, аннотация передает 2 параметра.
-        Сделать полную документацию всех полей, методов, конструкторов класса используя аннотацию Documented, либо же документационные комментарии.
+        Сделать полную документацию всех полей, методов, конструкторов класса используя аннотацию Documented,
+        либо же документационные комментарии.
         */
         System.out.println("Задание 2");
+        Calculater calculater = new Calculater();
+        Class<?> c = calculater.getClass();
+        Calc calc = c.getDeclaredMethod("addTwoNumbers", int.class, int.class).getAnnotation(Calc.class);
+        calculater.addTwoNumbers(calc.numX(), calc.numY());
+
         System.out.println("-------------------------------------");
 
         /*
@@ -26,6 +38,8 @@ public class Main {
         Помимо этого, попробуйте ещё в проекте использовать 5 различных аннотаций.
         */
         System.out.println("Задание 3");
+        SportCar car = new miniGar();
+        car.driver();
         System.out.println("-------------------------------------");
 
 

@@ -1,5 +1,13 @@
 package courses_java_Advanced.x_9_LambdaExpressions;
 
+import courses_java_Advanced.x_9_LambdaExpressions.task4.Calcul;
+import jdk.dynalink.Operation;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -19,6 +27,13 @@ public class Main {
         а потом применяем метод reduce() для свертки всех элементов в одно число.
         */
         System.out.println("Задание 2");
+        Map<Integer, Integer> map = new HashMap<>();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 1; i <= 4; i++) {
+            list.add(i);
+        }
+        System.out.println(list.stream().reduce((accumulator, element) -> accumulator + (element * element)).get());
+
         System.out.println("-------------------------------------");
 
 
@@ -36,6 +51,15 @@ public class Main {
         Напишите основные арифметические действия калькулятора используя лямбда-выражения
         */
         System.out.println("Задание 4");
+        Calcul add = (x, y) -> x - y;
+        Calcul sub = (x, y) -> x + y;
+        Calcul div = (x, y) -> x / y;
+        Calcul mult = (x, y) -> x * y;
+        System.out.println(add.calc(5,3));
+        System.out.println(sub.calc(5,3));
+        System.out.println(div.calc(5,3));
+        System.out.println(mult.calc(5,3));
+
         System.out.println("-------------------------------------");
     }
 }
